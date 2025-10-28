@@ -56,16 +56,19 @@ src/
 ### Installation
 
 1. Clone the repository or navigate to the project directory:
+
    ```bash
    cd ticket-app-vue
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    ```
 
 3. Start the development server:
+
    ```bash
    npm run dev
    ```
@@ -114,51 +117,36 @@ The project uses Tailwind CSS v4 with the new PostCSS plugin architecture. If yo
 
 ## Key Features Comparison with React Version
 
-| Feature | React Version | Vue Version |
-|---------|-------------|-------------|
-| Framework | React 18 | Vue 3 |
-| State Management | Context API | Pinia |
-| Routing | React Router | Vue Router |
-| Styling | Tailwind CSS | Tailwind CSS |
-| Icons | Lucide React | Lucide Vue Next |
-| TypeScript | Yes | Yes |
-| Build Tool | Vite | Vite |
+| Feature          | React Version | Vue Version     |
+| ---------------- | ------------- | --------------- |
+| Framework        | React 18      | Vue 3           |
+| State Management | Context API   | Pinia           |
+| Routing          | React Router  | Vue Router      |
+| Styling          | Tailwind CSS  | Tailwind CSS    |
+| Icons            | Lucide React  | Lucide Vue Next |
+| TypeScript       | Yes           | Yes             |
+| Build Tool       | Vite          | Vite            |
 
 ## Architecture Decisions
 
 ### State Management
+
 - **Pinia** was chosen over Vuex for its simplicity and TypeScript support
 - Stores are organized by feature (auth, tickets, toast)
 
 ### Component Structure
+
 - **Composition API** is used throughout for better TypeScript integration
 - Components are organized by feature and functionality
 - Reusable components are placed in appropriate directories
 
 ### Routing
+
 - **Vue Router** with route guards for authentication
 - Lazy-loaded components for better performance
 
 ### Styling
+
 - **Tailwind CSS** for consistent styling with the React version
 - Custom CSS classes for reusable components
 - Responsive design with mobile-first approach
-
-## Browser Support
-
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Run tests and linting
-5. Submit a pull request
-
-## License
-
-This project is licensed under the MIT License.

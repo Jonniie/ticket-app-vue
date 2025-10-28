@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @layer base {
   body {
@@ -8,7 +8,7 @@
     margin: 0;
     min-height: 100vh;
   }
-  
+
   html {
     scroll-behavior: smooth;
   }
@@ -18,49 +18,49 @@
   .btn-primary {
     @apply bg-black text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2;
   }
-  
+
   .btn-secondary {
     @apply bg-white text-black border border-gray-300 px-6 py-3 rounded-lg font-medium hover:bg-gray-50 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2;
   }
-  
+
   .btn-danger {
     @apply bg-red-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-red-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2;
   }
-  
+
   .input-field {
     @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200;
   }
-  
+
   .card {
     @apply bg-white border border-gray-200 rounded-xl shadow-sm p-6;
   }
-  
+
   .status-badge {
     @apply px-3 py-1 rounded-full text-sm font-medium;
   }
-  
+
   .status-open {
     @apply bg-green-100 text-green-800;
   }
-  
+
   .status-in-progress {
     @apply bg-amber-100 text-amber-800;
   }
-  
+
   .status-closed {
     @apply bg-gray-100 text-gray-800;
   }
-  
+
   .wave-bg {
     background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
   }
-  
+
   .decorative-circle {
     @apply absolute rounded-full opacity-20;
   }
-  
+
   .container-custom {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 }
 
