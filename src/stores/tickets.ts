@@ -65,37 +65,37 @@ export const useTicketsStore = defineStore('tickets', () => {
   const createTicket = async (ticketData: any) => {
     loading.value = true
     error.value = null
-    
+
     try {
       // Validate required fields
       if (!ticketData.title || !ticketData.title.trim()) {
         throw new Error('Title is required')
       }
-      
+
       if (!ticketData.status || !['open', 'in_progress', 'closed'].includes(ticketData.status)) {
         throw new Error('Invalid status')
       }
-      
+
       if (ticketData.description && ticketData.description.length > 1000) {
         throw new Error('Description must be less than 1000 characters')
       }
-      
-      await new Promise(resolve => setTimeout(resolve, 500)) // Simulate API call
-      
+
+      await new Promise((resolve) => setTimeout(resolve, 500)) // Simulate API call
+
       const newTicket = {
         id: Date.now(),
         ...ticketData,
         title: ticketData.title.trim(),
         description: ticketData.description?.trim() || '',
         createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString()
+        updatedAt: new Date().toISOString(),
       }
-      
+
       tickets.value = [newTicket, ...tickets.value]
       saveTickets()
       return { success: true, ticket: newTicket }
-    } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Failed to create ticket'
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : 'Failed to create ticket'
       error.value = errorMessage
       return { success: false, error: errorMessage }
     } finally {
@@ -106,45 +106,45 @@ export const useTicketsStore = defineStore('tickets', () => {
   const updateTicket = async (id: number, updates: any) => {
     loading.value = true
     error.value = null
-    
+
     try {
       // Validate ticket exists
-      const existingTicket = tickets.value.find(t => t.id === id)
+      const existingTicket = tickets.value.find((t) => t.id === id)
       if (!existingTicket) {
         throw new Error('Ticket not found')
       }
-      
+
       // Validate updates
       if (updates.title !== undefined && (!updates.title || !updates.title.trim())) {
         throw new Error('Title is required')
       }
-      
+
       if (updates.status && !['open', 'in_progress', 'closed'].includes(updates.status)) {
         throw new Error('Invalid status')
       }
-      
+
       if (updates.description && updates.description.length > 1000) {
         throw new Error('Description must be less than 1000 characters')
       }
-      
-      await new Promise(resolve => setTimeout(resolve, 500)) // Simulate API call
-      
-      tickets.value = tickets.value.map(ticket => 
-        ticket.id === id 
-          ? { 
-              ...ticket, 
-              ...updates, 
+
+      await new Promise((resolve) => setTimeout(resolve, 500)) // Simulate API call
+
+      tickets.value = tickets.value.map((ticket) =>
+        ticket.id === id
+          ? {
+              ...ticket,
+              ...updates,
               title: updates.title ? updates.title.trim() : ticket.title,
               description: updates.description ? updates.description.trim() : ticket.description,
-              updatedAt: new Date().toISOString() 
+              updatedAt: new Date().toISOString(),
             }
-          : ticket
+          : ticket,
       )
-      
+
       saveTickets()
       return { success: true }
-    } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Failed to update ticket'
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : 'Failed to update ticket'
       error.value = errorMessage
       return { success: false, error: errorMessage }
     } finally {
@@ -155,21 +155,21 @@ export const useTicketsStore = defineStore('tickets', () => {
   const deleteTicket = async (id: number) => {
     loading.value = true
     error.value = null
-    
+
     try {
       // Validate ticket exists
-      const existingTicket = tickets.value.find(t => t.id === id)
+      const existingTicket = tickets.value.find((t) => t.id === id)
       if (!existingTicket) {
         throw new Error('Ticket not found')
       }
-      
-      await new Promise(resolve => setTimeout(resolve, 500)) // Simulate API call
-      
-      tickets.value = tickets.value.filter(ticket => ticket.id !== id)
+
+      await new Promise((resolve) => setTimeout(resolve, 500)) // Simulate API call
+
+      tickets.value = tickets.value.filter((ticket) => ticket.id !== id)
       saveTickets()
       return { success: true }
-    } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Failed to delete ticket'
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : 'Failed to delete ticket'
       error.value = errorMessage
       return { success: false, error: errorMessage }
     } finally {
@@ -178,19 +178,19 @@ export const useTicketsStore = defineStore('tickets', () => {
   }
 
   const getTicketById = (id: number) => {
-    return tickets.value.find(ticket => ticket.id === id)
+    return tickets.value.find((ticket) => ticket.id === id)
   }
 
   const getTicketsByStatus = (status: string) => {
-    return tickets.value.filter(ticket => ticket.status === status)
+    return tickets.value.filter((ticket) => ticket.status === status)
   }
 
   const getTicketStats = computed(() => {
     const total = tickets.value.length
-    const open = tickets.value.filter(t => t.status === 'open').length
-    const inProgress = tickets.value.filter(t => t.status === 'in_progress').length
-    const closed = tickets.value.filter(t => t.status === 'closed').length
-    
+    const open = tickets.value.filter((t) => t.status === 'open').length
+    const inProgress = tickets.value.filter((t) => t.status === 'in_progress').length
+    const closed = tickets.value.filter((t) => t.status === 'closed').length
+
     return { total, open, inProgress, closed }
   })
 
@@ -209,6 +209,6 @@ export const useTicketsStore = defineStore('tickets', () => {
     getTicketById,
     getTicketsByStatus,
     getTicketStats,
-    setError
+    setError,
   }
 })

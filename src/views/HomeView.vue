@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+// Placeholder component - not currently used in routing
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <div>Home Page</div>
   </main>
 </template>
